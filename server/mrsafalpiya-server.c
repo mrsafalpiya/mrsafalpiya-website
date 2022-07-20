@@ -117,6 +117,11 @@ s_handler_fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 
 		return;
 	}
+
+	/* = Home page = */
+	struct mg_http_serve_opts opts = { .root_dir = "res/",
+		                           .page404  = "res/404.html" };
+	mg_http_serve_dir(c, hm, &opts);
 }
 
 static int
